@@ -1,11 +1,10 @@
-// pages/view-users.tsx
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export default function ViewUsers() {
   const [users, setUsers] = useState([]);
 
   const fetchUsers = async () => {
-    const res = await fetch('/api/users');
+    const res = await fetch("/api/users");
     const data = await res.json();
     setUsers(data);
   };

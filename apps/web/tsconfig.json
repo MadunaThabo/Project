@@ -1,6 +1,9 @@
 {
   "extends": "@repo/typescript-config/nextjs.json",
   "compilerOptions": {
+    "paths": {
+      "@repo/orm/*": ["./packages/orm/src/*"]
+    },
     "plugins": [
       {
         "name": "next"

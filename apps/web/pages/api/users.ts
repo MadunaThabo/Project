@@ -2,6 +2,18 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "@repo/orm/prisma";
 
+/**
+ * Handles all the API routes for users.
+ *
+ * Supported methods: POST, DELETE, GET
+ *
+ * POST: Adds a new user to the database.
+ * DELETE: Removes the user with the given ID from the database.
+ * GET: Fetches all the users from the database.
+ *
+ * @param {NextApiRequest} req - The request coming from the client.
+ * @param {NextApiResponse} res - The response that will be sent back to the client.
+ */
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -9,7 +21,7 @@ export default async function handler(
   const { method } = req;
 
   switch (method) {
-    case "POST":
+    case "POST": {
       // Add User
       const { name, email } = req.body;
       try {
@@ -23,8 +35,9 @@ export default async function handler(
         res.status(500).json({ error: "Error creating user" });
       }
       break;
+    }
 
-    case "DELETE":
+    case "DELETE": {
       // Remove User
       const { id } = req.body;
       try {
@@ -36,6 +49,7 @@ export default async function handler(
         res.status(500).json({ error: "Error deleting user" });
       }
       break;
+    }
 
     case "GET":
       // Fetch Users
